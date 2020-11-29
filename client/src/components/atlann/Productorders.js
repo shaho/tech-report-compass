@@ -69,24 +69,13 @@ class Productorders extends React.Component {
     },
     series: [70, 52, 26],
   };
+
   render() {
+    // console.log(this.props.products);
     return (
       <Card>
         <CardHeader>
           <CardTitle>Request Summery</CardTitle>
-          {/* <UncontrolledDropdown>
-            <DropdownToggle
-              tag="small"
-              className="text-bold-500 cursor-pointer"
-            >
-              Last 7 days <ChevronDown size={10} />
-            </DropdownToggle>
-            <DropdownMenu right>
-              <DropdownItem>Last 28 days</DropdownItem>
-              <DropdownItem>Last Month</DropdownItem>
-              <DropdownItem>Last Year</DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown> */}
         </CardHeader>
         <CardBody>
           <Chart
@@ -128,4 +117,13 @@ class Productorders extends React.Component {
     );
   }
 }
+
+// const mapStateToProps = (state) => {
+//   return {
+//     products: state.products.data,
+//   };
+// };
+
+// export default connect(mapStateToProps, { getAllProducts })(Productorders);
+
 export default Productorders;

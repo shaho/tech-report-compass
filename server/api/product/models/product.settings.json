@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "name": "product"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "tool": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string"
+    },
+    "progress": {
+      "type": "string"
+    }
+  }
+}

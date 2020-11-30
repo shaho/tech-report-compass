@@ -25,9 +25,9 @@ let $primary = "#7367F0",
 export default function Home() {
   // return <h4>You're Home!.</h4>;
   return (
-    <>
+    <div id="dashboard-analytics">
       <Row>
-        <Col lg="4" sm="12">
+        <Col lg="3" sm="12">
           <SessionByDevice
             primary={$primary}
             warning={$warning}
@@ -48,7 +48,7 @@ export default function Home() {
             dangerLight={$danger_light}
           />
         </Col>
-        <Col lg="4" sm="12">
+        <Col lg="5" sm="12">
           <SupportTracker primary={$primary} danger={$danger} white={$white} />
         </Col>
       </Row>
@@ -68,6 +68,6 @@ export default function Home() {
           <DispatchedOrders />
         </Col>
       </Row>
-    </>
+    </div>
   );
 }

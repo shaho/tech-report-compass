@@ -1,6 +1,6 @@
 # Tech Status Report
 
-The project is based on React and [strapi](https://strapi.io/) as headless CMS, for the sake of demonstration the deafult database is SqlDB.
+The project is based on React and [strapi](https://strapi.io/) as headless CMS, for the sake of demonstration the default database is SqlDB.
 
 ### Getting Started
 

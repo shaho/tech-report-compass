@@ -1,119 +1,97 @@
 import React from "react";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardBody,
-  UncontrolledDropdown,
-  DropdownMenu,
-  DropdownItem,
-  DropdownToggle,
-  Row,
-  Col,
-} from "reactstrap";
-import Chart from "react-apexcharts";
-import { ChevronDown } from "react-feather";
+import Chart from "react-google-charts";
 
-class SupportTracker extends React.Component {
-  state = {
-    options: {
-      chart: {},
-      plotOptions: {
-        radialBar: {
-          size: 150,
-          offsetY: 20,
-          startAngle: -150,
-          endAngle: 150,
-          hollow: {
-            size: "65%",
-          },
-          track: {
-            background: this.props.white,
-            strokeWidth: "100%",
-          },
-          dataLabels: {
-            value: {
-              offsetY: 30,
-              color: "#99a2ac",
-              fontSize: "2rem",
+import { Card, CardHeader, CardTitle, CardBody } from "reactstrap";
+
+export default function SupportTracker() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>
+          Active Sprints Gantt Chart
+          <h6 style={{ color: "rgb(184, 194, 204" }}>Last 6 Months</h6>
+        </CardTitle>
+      </CardHeader>
+
+      <CardBody>
+        {/* chart */}
+        <Chart
+          style={{ marginTop: "2em" }}
+          width={"100%"}
+          height={"400px"}
+          chartType="Gantt"
+          loader={<div>Loading Chart</div>}
+          data={[
+            [
+              { type: "string", label: "Task ID" },
+              { type: "string", label: "Task Name" },
+              { type: "string", label: "Resource" },
+              { type: "date", label: "Start Date" },
+              { type: "date", label: "End Date" },
+              { type: "number", label: "Duration" },
+              { type: "number", label: "Percent Complete" },
+              { type: "string", label: "Dependencies" },
+            ],
+            [
+              "2014Spring",
+              "Taxonomy",
+              "spring",
+              new Date(2014, 2, 22),
+              new Date(2014, 5, 20),
+              null,
+              100,
+              null,
+            ],
+            [
+              "2014Summer",
+              "UserHub",
+              "summer",
+              new Date(2014, 5, 21),
+              new Date(2014, 8, 20),
+              null,
+              100,
+              null,
+            ],
+            [
+              "2014Autumn",
+              "Insight",
+              "autumn",
+              new Date(2014, 8, 21),
+              new Date(2014, 11, 20),
+              null,
+              100,
+              null,
+            ],
+            [
+              "2014Winter",
+              "Planning",
+              "winter",
+              new Date(2014, 11, 21),
+              new Date(2015, 2, 21),
+              null,
+              100,
+              null,
+            ],
+            [
+              "2015Spring",
+              "Media Library",
+              "spring",
+              new Date(2015, 2, 22),
+              new Date(2015, 5, 20),
+              null,
+              50,
+              null,
+            ],
+          ]}
+          options={{
+            height: 400,
+            gantt: {
+              trackHeight: 30,
             },
-          },
-        },
-      },
-      colors: [this.props.danger],
-      fill: {
-        type: "solid",
-        // gradient: {
-        //   // enabled: true,
-        //   shade: "dark",
-        //   type: "horizontal",
-        //   shadeIntensity: 0.5,
-        //   gradientToColors: [this.props.primary],
-        //   inverseColors: true,
-        //   opacityFrom: 1,
-        //   opacityTo: 1,
-        //   stops: [0, 100],
-        // },
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        dashArray: 8,
-      },
-      labels: ["Completed Tickets"],
-    },
-    series: [83],
-  };
-  render() {
-    return (
-      <Card>
-        <CardHeader>
-          <CardTitle>Support Tracker</CardTitle>
-          {/* <UncontrolledDropdown>
-            <DropdownToggle className="cursor-pointer" tag="small">
-              Last 7 days <ChevronDown size={10} />
-            </DropdownToggle>
-            <DropdownMenu right>
-              <DropdownItem>Last 28 days</DropdownItem>
-              <DropdownItem>Last Month</DropdownItem>
-              <DropdownItem>Last Year</DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown> */}
-        </CardHeader>
-        <CardBody className="pt-0">
-          <Row>
-            <Col sm="2" className="d-flex flex-column flex-wrap text-center">
-              <h1 className="font-large-2 text-bold-600 mt-2 mb-0">163</h1>
-              <small>Tickets</small>
-            </Col>
-            <Col sm="10" className="d-flex justify-content-center">
-              <Chart
-                options={this.state.options}
-                series={this.state.series}
-                type="radialBar"
-                height={350}
-                className="support-tracker-card"
-              />
-            </Col>
-          </Row>
-          <div className="chart-info d-flex justify-content-between">
-            <div className="text-center">
-              <p className="mb-50">New Tickets</p>
-              <span className="font-large-1">29</span>
-            </div>
-            <div className="text-center">
-              <p className="mb-50">Open Tickets</p>
-              <span className="font-large-1">63</span>
-            </div>
-            <div className="text-center">
-              <p className="mb-50">Response Time</p>
-              <span className="font-large-1">1d</span>
-            </div>
-          </div>
-        </CardBody>
-      </Card>
-    );
-  }
+          }}
+          rootProps={{ "data-testid": "2" }}
+        />
+      </CardBody>
+    </Card>
+  );
 }
-export default SupportTracker;

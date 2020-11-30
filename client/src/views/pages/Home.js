@@ -25,7 +25,7 @@ let $primary = "#7367F0",
 export default function Home() {
   // return <h4>You're Home!.</h4>;
   return (
-    <div id="dashboard-analytics">
+    <div id="dashboard-analytics" style={{ marginTop: "-60px" }}>
       <Row>
         <Col lg="3" sm="12">
           <SessionByDevice

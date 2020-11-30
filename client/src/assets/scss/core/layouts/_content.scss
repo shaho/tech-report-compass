@@ -337,14 +337,14 @@ html {
 }
 
 .vertical-layout {
-  .main-menu{
-    .navigation{
-      .menu-content{
-        li a{
-          svg:first-child{
+  .main-menu {
+    .navigation {
+      .menu-content {
+        li a {
+          svg:first-child {
             margin-right: 1.38rem !important;
           }
-          .menu-toggle-icon{
+          .menu-toggle-icon {
             right: 9px;
           }
         }

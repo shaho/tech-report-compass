@@ -1,5 +1,8 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
+import { connect } from "react-redux";
+
+import { getAllProducts } from "../../redux/actions/product";
 
 import SessionByDevice from "../../components/atlann/SessionByDevice";
 import ProductOrders from "../../components/atlann/Productorders";
@@ -22,52 +25,63 @@ let $primary = "#7367F0",
   $purple = "#df87f2",
   $white = "#fff";
 
-export default function Home() {
+class Home extends React.Component {
   // return <h4>You're Home!.</h4>;
-  return (
-    <div id="dashboard-analytics" style={{ marginTop: "-60px" }}>
-      <Row>
-        <Col lg="3" sm="12">
-          <SessionByDevice
-            primary={$primary}
-            warning={$warning}
-            danger={$danger}
-            primaryLight={$primary_light}
-            warningLight={$warning_light}
-            dangerLight={$danger_light}
-          />
-        </Col>
+  componentDidMount() {
+    this.props.getAllProducts();
+  }
+  render() {
+    return (
+      <div id="dashboard-analytics" style={{ marginTop: "-60px" }}>
+        <Row>
+          <Col lg="3" sm="12">
+            <SessionByDevice
+              primary={$primary}
+              warning={$warning}
+              danger={$danger}
+              primaryLight={$primary_light}
+              warningLight={$warning_light}
+              dangerLight={$danger_light}
+            />
+          </Col>
 
-        <Col lg="4" sm="12">
-          <ProductOrders
-            primary={$primary}
-            warning={$warning}
-            danger={$danger}
-            primaryLight={$primary_light}
-            warningLight={$warning_light}
-            dangerLight={$danger_light}
-          />
-        </Col>
-        <Col lg="5" sm="12">
-          <SupportTracker primary={$primary} danger={$danger} white={$white} />
-        </Col>
-      </Row>
+          <Col lg="4" sm="12">
+            <ProductOrders
+              primary={$primary}
+              warning={$warning}
+              danger={$danger}
+              primaryLight={$primary_light}
+              warningLight={$warning_light}
+              dangerLight={$danger_light}
+            />
+          </Col>
+          <Col lg="5" sm="12">
+            <SupportTracker
+              primary={$primary}
+              danger={$danger}
+              white={$white}
+            />
+          </Col>
+        </Row>
 
-      <Row>
-        <Col>
-          <div className="divider divider-left-center">
-            <div className="divider-text">
-              <h3>Active Sprints</h3>
+        <Row>
+          <Col>
+            <div className="divider divider-left-center">
+              <div className="divider-text">
+                <h3>Active Sprints</h3>
+              </div>
             </div>
-          </div>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
 
-      <Row>
-        <Col sm="12">
-          <DispatchedOrders />
-        </Col>
-      </Row>
-    </div>
-  );
+        <Row>
+          <Col sm="12">
+            <DispatchedOrders />
+          </Col>
+        </Row>
+      </div>
+    );
+  }
 }
+
+export default connect(null, { getAllProducts })(Home);

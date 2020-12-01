@@ -23,9 +23,9 @@ import avatar7 from "../../assets/img/portrait/small/avatar-s-3.jpg";
 import avatar8 from "../../assets/img/portrait/small/avatar-s-4.jpg";
 
 class DispatchedOrders extends React.Component {
-  // componentDidMount() {
-  //   this.props.getAllProducts();
-  // }
+  componentDidMount() {
+    this.props.getAllProducts();
+  }
   render() {
     return (
       <Card>
@@ -51,18 +51,13 @@ class DispatchedOrders extends React.Component {
           </thead>
           <tbody>
             {this.props.products &&
-              this.props.products.progress &&
-              this.props.products.progress.map((product, index) => {
+              this.props.products.map((product) => {
                 return (
-                  <tr key={index}>
-                    <td>{product.progress}</td>
+                  <tr key={product.id}>
+                    <td>{product.tool}</td>
                     <td>
                       <div
-                        className={
-                          product.statuse.color.hex === "#FF0000"
-                            ? "bg-danger"
-                            : "bg-warning"
-                        }
+                        className="bg-success"
                         style={{
                           height: "10px",
                           width: "10px",
@@ -71,11 +66,11 @@ class DispatchedOrders extends React.Component {
                           marginRight: "5px",
                         }}
                       />
-                      <span>{product.statuse.name}</span>
+                      <span>{product.status}</span>
                     </td>
                     <td className="p-1">
                       <ul className="list-unstyled users-list m-0 d-flex">
-                        <li className="pull-up">{product.hoursSpent}</li>
+                        <li className="pull-up">{product.duration}</li>
                       </ul>
                     </td>
                     <td>Anniston, Alabama</td>
@@ -87,8 +82,8 @@ class DispatchedOrders extends React.Component {
                         value="80"
                       />
                     </td>
-                    <td>{product.startDate}</td>
-                    <td>{product.estimateDeliveryDate}</td>
+                    <td>14:58 26/07/2018</td>
+                    <td>28/07/2018</td>
                   </tr>
                 );
               })}
@@ -108,4 +103,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(DispatchedOrders);
+export default connect(mapStateToProps, { getAllProducts })(DispatchedOrders);

@@ -23,10 +23,12 @@ export const getAllProducts = () => {
       dispatch({
         type: PRODUCTS_ACTION.START_FETCH,
       });
-      const results = await axios.get("http://localhost:1337/products");
+      const results = await axios.get(
+        "https://tech-report-compass-backend.atlann.co/api/react-endpoint"
+      );
       if (results.status === 200) {
         const { data } = results;
-        // console.log(data);
+        console.log(data);
         dispatch({
           type: PRODUCTS_ACTION.FINISH_FETCH,
           payload: data,

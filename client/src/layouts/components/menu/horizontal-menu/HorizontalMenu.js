@@ -10,7 +10,7 @@ import { ChevronDown, ChevronRight } from "react-feather";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { history } from "../../../../history";
-import navigationConfig from "../../../../configs/horizontalMenuConfig";
+// import navigationConfig from "../../../../configs/horizontalMenuConfig";
 class HorizontalSidebar extends React.Component {
   constructor(props) {
     super(props);

@@ -1,15 +1,12 @@
 import React from "react";
 import {
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
-  Media,
-  Badge,
 } from "reactstrap";
-import PerfectScrollbar from "react-perfect-scrollbar";
+// import PerfectScrollbar from "react-perfect-scrollbar";
 import axios from "axios";
 import * as Icon from "react-feather";
 import classnames from "classnames";
@@ -368,7 +365,7 @@ class NavbarUser extends React.PureComponent {
               <span className="user-name text-bold-600">
                 {this.props.userName}
               </span>
-              <span className="user-status">Global Media Hub Department</span>
+              <span className="user-status">Global Media</span>
             </div>
             <span data-tour="user">
               <img

@@ -23,80 +23,33 @@ class SupportTracker extends React.Component {
             <Chart
               style={{ marginTop: "2em" }}
               width={"100%"}
-              height={"400px"}
+              height={"200px"}
               chartType="Gantt"
               loader={<div>Loading Chart</div>}
               data={[
                 [
-                  { type: "string", label: "Task ID" },
-                  { type: "string", label: "Task Name" },
-                  // { type: "date", label: "Resource" },
-                  // { type: "date", label: "Start Date" },
-                  // { type: "date", label: "End Date" },
-                  // { type: "number", label: "Duration" },
-                  // { type: "number", label: "Percent Complete" },
-                  // { type: "string", label: "Dependencies" },
+                  { type: "string", label: "Name" },
+                  { type: "string", label: "Epic Name" },
+                  { type: "string", label: "Resource" },
+                  { type: "date", label: "Start Date" },
+                  { type: "date", label: "End Date" },
+                  { type: "number", label: "Duration" },
+                  { type: "number", label: "Percent Complete" },
+                  { type: "string", label: "Dependencies" },
                 ],
-                ...this.props.products.gantt.map((item) => [
-                  item.toolName.epic.name,
+                ...this.props.products.gantt.map((item, index) => [
                   item.toolName.name,
-                  // new Date(item.startDate),
-                  // new Date(item.endDate),
-                  // 10,
+                  item.toolName.name,
+                  `${item.toolName.epic.name} ${index}`,
+                  new Date(item.startDate),
+                  new Date(item.endDate),
+                  null,
+                  item.completePercentage,
+                  null,
                 ]),
-                // [
-                //   "2014Spring",
-                //   "Taxonomy",
-                //   "spring",
-                //   new Date(2014, 2, 22),
-                //   new Date(2014, 5, 20),
-                //   null,
-                //   100,
-                //   null,
-                // ],
-                // [
-                //   "2014Summer",
-                //   "UserHub",
-                //   "summer",
-                //   new Date(2014, 5, 21),
-                //   new Date(2014, 8, 20),
-                //   null,
-                //   100,
-                //   null,
-                // ],
-                // [
-                //   "2014Autumn",
-                //   "Insight",
-                //   "autumn",
-                //   new Date(2014, 8, 21),
-                //   new Date(2014, 11, 20),
-                //   null,
-                //   100,
-                //   null,
-                // ],
-                // [
-                //   "2014Winter",
-                //   "Planning",
-                //   "winter",
-                //   new Date(2014, 11, 21),
-                //   new Date(2015, 2, 21),
-                //   null,
-                //   100,
-                //   null,
-                // ],
-                // [
-                //   "2015Spring",
-                //   "Media Library",
-                //   "spring",
-                //   new Date(2015, 2, 22),
-                //   new Date(2015, 5, 20),
-                //   null,
-                //   50,
-                //   null,
-                // ],
               ]}
               options={{
-                height: 400,
+                height: 200,
                 gantt: {
                   trackHeight: 30,
                 },

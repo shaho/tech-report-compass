@@ -1,26 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 
-// import {} from ".."
+// import { getAllProducts } from "../../redux/actions/product";
 
-import { getAllProducts } from "../../redux/actions/product";
-
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  Table,
-  UncontrolledTooltip,
-  Progress,
-} from "reactstrap";
-import avatar1 from "../../assets/img/portrait/small/avatar-s-5.jpg";
-import avatar2 from "../../assets/img/portrait/small/avatar-s-7.jpg";
-import avatar3 from "../../assets/img/portrait/small/avatar-s-10.jpg";
-import avatar4 from "../../assets/img/portrait/small/avatar-s-8.jpg";
-import avatar5 from "../../assets/img/portrait/small/avatar-s-1.jpg";
-import avatar6 from "../../assets/img/portrait/small/avatar-s-2.jpg";
-import avatar7 from "../../assets/img/portrait/small/avatar-s-3.jpg";
-import avatar8 from "../../assets/img/portrait/small/avatar-s-4.jpg";
+import { Card, CardHeader, CardTitle, Table, Progress } from "reactstrap";
+// import avatar1 from "../../assets/img/portrait/small/avatar-s-5.jpg";
+// import avatar2 from "../../assets/img/portrait/small/avatar-s-7.jpg";
+// import avatar3 from "../../assets/img/portrait/small/avatar-s-10.jpg";
+// import avatar4 from "../../assets/img/portrait/small/avatar-s-8.jpg";
+// import avatar5 from "../../assets/img/portrait/small/avatar-s-1.jpg";
+// import avatar6 from "../../assets/img/portrait/small/avatar-s-2.jpg";
+// import avatar7 from "../../assets/img/portrait/small/avatar-s-3.jpg";
+// import avatar8 from "../../assets/img/portrait/small/avatar-s-4.jpg";
 
 class DispatchedOrders extends React.Component {
   // componentDidMount() {
@@ -30,7 +21,7 @@ class DispatchedOrders extends React.Component {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Dispatched Orders</CardTitle>
+          <CardTitle>Progress Details</CardTitle>
         </CardHeader>
         {this.props.isFetching && <span>is loading...</span>}
         {this.props.error && <h1>{this.props.error}</h1>}
@@ -40,13 +31,13 @@ class DispatchedOrders extends React.Component {
         >
           <thead>
             <tr>
-              <th>ORDER</th>
+              <th>TOOL</th>
               <th>STATUS</th>
               <th>HOURS SPENT</th>
-              <th>LOCATION</th>
-              <th>DISTANCE</th>
+              <th>PRIORITY</th>
+              <th>PROGRESS</th>
               <th>START DATE</th>
-              <th>EST DEL. DT</th>
+              <th>EST DELIVERY DATE</th>
             </tr>
           </thead>
           <tbody>
@@ -55,7 +46,7 @@ class DispatchedOrders extends React.Component {
               this.props.products.progress.map((product, index) => {
                 return (
                   <tr key={index}>
-                    <td>{product.progress}</td>
+                    <td>{product.toolName.name}</td>
                     <td>
                       <div
                         className={
@@ -75,15 +66,19 @@ class DispatchedOrders extends React.Component {
                     </td>
                     <td className="p-1">
                       <ul className="list-unstyled users-list m-0 d-flex">
-                        <li className="pull-up">{product.hoursSpent}</li>
+                        <li className="pull-up">{product.hoursSpent} hrs</li>
                       </ul>
                     </td>
-                    <td>Anniston, Alabama</td>
+                    <td>{product.priority === 1 ? "High" : "Low"}</td>
                     <td>
-                      <span>130 km</span>
+                      <span>{product.progress} %</span>
                       <Progress
                         className="mb-0 mt-1"
-                        color="success"
+                        color={
+                          product.statuse.color.hex === "#FF0000"
+                            ? "danger"
+                            : "warning"
+                        }
                         value="80"
                       />
                     </td>

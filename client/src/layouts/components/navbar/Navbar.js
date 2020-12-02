@@ -1,13 +1,22 @@
 import React from "react";
 import { Navbar } from "reactstrap";
 import classnames from "classnames";
+import queryString from "query-string";
 import NavbarBookmarks from "./NavbarBookmarks";
 import NavbarUser from "./NavbarUser";
 import userImg from "../../../assets/img/portrait/small/avatar-s-11.jpg";
 
 const ThemeNavbar = (props) => {
+  const [userInfo, setUserInfo] = React.useState(
+    queryString.parse(window.location.search)
+  );
+  // console.log(userInfo);
   const colorsArr = ["primary", "danger", "success", "info", "warning", "dark"];
   const navbarTypes = ["floating", "static", "sticky", "hidden"];
+
+  // React.useEffect(()=>{
+
+  // },[userInfo])
   return (
     <React.Fragment>
       <div className="content-overlay" />
@@ -64,7 +73,8 @@ const ThemeNavbar = (props) => {
               <NavbarUser
                 handleAppOverlay={props.handleAppOverlay}
                 changeCurrentLang={props.changeCurrentLang}
-                userName="Patricio Niederhauser"
+                userName={userInfo.user || "Patricio Niederhauser"}
+                // userName="Patricio Niederhauser"
                 userImg={userImg}
               />
             </div>
